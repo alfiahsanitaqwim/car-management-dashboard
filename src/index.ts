@@ -1,53 +1,19 @@
 import { PrismaClient } from "@prisma/client";
 import express, { Request, Response } from "express";
 import createError from "http-errors"
+import { CarsAPI } from "./app/cars";
+import { CarsTypeAPI } from "./app/car_types";
+import { CarsBrandAPI } from "./app/car_brands";
+import { CustomerAPI } from "./app/customers";
 
 const prisma = new PrismaClient()
 const app = express()
 
 app.use(express.json())
-
-
-// TODO: Routing aplikasi akan kita tulis di sini
-app.post('/post', async (req: Request, res: Response) => {
-    const { content, authorEmail } = req.body
-    const result = await prisma.post.create({
-        data: {
-            content,
-            author: { connect: { email: authorEmail } }
-        }
-    })
-    res.json(result)
-})
-
-app.get('/post/:id', async (req: Request, res: Response) => {
-    const { id } = req.params
-    const post = await prisma.post.findUnique({
-        where: { id: Number(id) },
-    })
-    res.json(post)
-})
-
-app.put('/post/:id', async (req: Request, res: Response) => {
-    const { id } = req.params
-    const post = await prisma.post.update({
-        where: { id: Number(id) },
-        data: {
-            ...req.body
-        }
-    })
-
-    res.json(post)
-})
-
-
-app.delete(`/post/:id`, async (req: Request, res: Response) => {
-    const { id } = req.params
-    const post = await prisma.post.delete({
-        where: { id: Number(id) },
-    })
-    res.json(post)
-})
+CarsBrandAPI(app, prisma)
+CarsTypeAPI(app, prisma)
+CarsAPI(app, prisma);
+CustomerAPI(app, prisma)
 
 // handle 404 error
 app.use((req: Request, res: Response, next: Function) => {
@@ -57,3 +23,4 @@ app.use((req: Request, res: Response, next: Function) => {
 app.listen(3000, () =>
     console.log(`⚡️[server]: Server is running at https://localhost:3000`)
 )
+
