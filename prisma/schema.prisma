@@ -10,18 +10,48 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model User {
-  id        Int     @default(autoincrement()) @id
-  email     String  @unique
-  username  String  @unique
-  name      String?
-  posts     Post[]
+
+model CarType {
+  id        Int      @id @default(autoincrement())
+  name      String
+  cars      Car[]
+  
+  @@map("car_types")
 }
 
-model Post {
-  id        Int       @default(autoincrement()) @id
-  content   String
-  author    User?     @relation(fields: [authorId], references: [id])
-  authorId  Int?
-  createdAt DateTime  @default(now())
+model CarBrand {
+  id        Int      @id @default(autoincrement())
+  name      String
+  cars      Car[]
+  
+  @@map("car_brands")
+}
+
+model Car {
+  id            Int       @id @default(autoincrement())
+  car_name      String
+  id_car_type   Int
+  id_car_brand  Int
+  availabiliy   Boolean
+  capacity      Int
+  image_url     String
+  price         Int
+  desc          String
+  car_type      CarType   @relation(fields: [id_car_type], references: [id])
+  car_brand     CarBrand  @relation(fields: [id_car_brand], references: [id])
+  customers     Customer[]
+  
+  @@map("cars")
+}
+
+model Customer {
+  id_customer   Int       @id @default(autoincrement())
+  id_car        Int
+  name          String
+  email         String    @unique
+  phone         Int
+  photo         String
+  car           Car       @relation(fields: [id_car], references: [id])
+  
+  @@map("customers")
 }

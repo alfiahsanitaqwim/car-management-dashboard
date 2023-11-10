@@ -4,41 +4,56 @@ import createError from "http-errors"
 
 const prisma = new PrismaClient()
 const app = express()
+
 app.use(express.json())
+
+
 // TODO: Routing aplikasi akan kita tulis di sini
-
-// antara start
-app.get('/', async (req: Request, res: Response) => {
-    res.json("get all cars")
-})
-app.get('/:id', async (req: Request, res: Response) => {
-    res.json("Get cars by id")
-})
-
-app.post('/add', async (req: Request, res: Response) => {
-    res.json("Add car")
+app.post('/post', async (req: Request, res: Response) => {
+    const { content, authorEmail } = req.body
+    const result = await prisma.post.create({
+        data: {
+            content,
+            author: { connect: { email: authorEmail } }
+        }
+    })
+    res.json(result)
 })
 
-app.put('/:id', async (req: Request, res: Response) => {
-    res.json("Edit car")
+app.get('/post/:id', async (req: Request, res: Response) => {
+    const { id } = req.params
+    const post = await prisma.post.findUnique({
+        where: { id: Number(id) },
+    })
+    res.json(post)
 })
 
-app.delete('/:id', async (req: Request, res: Response) => {
-    res.json("delete car")
+app.put('/post/:id', async (req: Request, res: Response) => {
+    const { id } = req.params
+    const post = await prisma.post.update({
+        where: { id: Number(id) },
+        data: {
+            ...req.body
+        }
+    })
+
+    res.json(post)
 })
 
-app.get('/feed', async (req: Request, res: Response) => {
-    // const posts = await prisma.post.findMany({
-    //   include: { author: true }
-    // })
-    res.json("posts")
+
+app.delete(`/post/:id`, async (req: Request, res: Response) => {
+    const { id } = req.params
+    const post = await prisma.post.delete({
+        where: { id: Number(id) },
+    })
+    res.json(post)
 })
-// antara end
+
 // handle 404 error
 app.use((req: Request, res: Response, next: Function) => {
-  next(createError(404))
+    next(createError(404))
 })
 
 app.listen(3000, () =>
-  console.log(`⚡️[server]: Server is running at http://localhost:3000`)
+    console.log(`⚡️[server]: Server is running at https://localhost:3000`)
 )
