@@ -1,11 +1,10 @@
-
 import { Request, Response } from "express";
 export const CarsAPI = (app: any, prisma: any) => {
     app.post('/create/car', async (req: Request, res: Response) => {
-        const { car_name, id_car_type, id_car_brand, availability, capacity, image_url, price, desc } = req.body
+        const { car_name, id_car_type, id_car_brand, availabiliy, capacity, image_url, price, desc } = req.body
         const result = await prisma.car.create({
             data: {
-                car_name, id_car_type, id_car_brand, availability, capacity, image_url, price, desc
+                car_name, id_car_type, id_car_brand, availabiliy, capacity, image_url, price, desc
             }
         })
         res.json(result)
@@ -18,6 +17,10 @@ export const CarsAPI = (app: any, prisma: any) => {
         const { id } = req.params
         const result = await prisma.car.findUnique({
             where: { id: Number(id) },
+            include: {
+                car_brand: true,
+                car_type: true,
+            },
         })
         res.json(result)
     })

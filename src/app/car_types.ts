@@ -1,4 +1,3 @@
-
 import { Request, Response } from "express";
 export const CarsTypeAPI = (app: any, prisma: any) => {
     app.post('/create/car-type', async (req: Request, res: Response) => {

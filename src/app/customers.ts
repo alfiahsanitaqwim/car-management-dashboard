@@ -1,4 +1,3 @@
-
 import { Request, Response } from "express";
 export const CustomerAPI = (app: any, prisma: any) => {
     app.post('/create/customer', async (req: Request, res: Response) => {
