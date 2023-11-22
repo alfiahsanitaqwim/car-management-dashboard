@@ -7,12 +7,6 @@ const {v4: uuidv4} = require("uuid")
 
 //  
 const get = async (req:Request, res: Response)=> { 
-    // const getAll  = await new CarService().getAll();
-    // //@ts-ignore
-    // res.status(200).json({
-    //     message: "Success",
-    //     data: getAll
-    // });
 
     new CarService().getAll().then((response) => {
         console.log({response});

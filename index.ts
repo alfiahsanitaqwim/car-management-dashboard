@@ -23,11 +23,12 @@ const knexInstance = knex({
 const PORT: number = 3000;
 
 Model.knex(knexInstance)
+          
 cloudinary.config({ 
-    cloud_name: 'djp77xipf', 
-    api_key: '477512212399319', 
-    api_secret: '***************************' 
-  });
+  cloud_name: 'djp77xipf', 
+  api_key: '477512212399319', 
+  api_secret: 'puwH-ffmZk-VWjkqNtuxMtc09sk' 
+});
 
 
 // to set up view engine tools using ejs
