@@ -1,14 +1,14 @@
 import CarRepository from "../repositories/cars";
 
 export default class CarService {
-    carRepository: CarRepository;
+    #carRepository: CarRepository;
 
     constructor(){
-        this.carRepository = new CarRepository();
+        this.#carRepository = new CarRepository();
     }
 
    async getAll(){
-        return await this.carRepository.getAll();
+        return await this.#carRepository.getAll();
     }
 
     async getById(){

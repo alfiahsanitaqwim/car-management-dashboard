@@ -5,6 +5,7 @@ const ExpressT = require("express").Express;
 const isAdmin   = require("./src/middleware/isAdmin")
 const handleLogger   = require("./src/middleware/handlerLogger")
 const carRouter = require("./src/routes/carRouter");
+const userRouter = require("./src/routes/userRouter")
 const upload = require("./src/middleware/upload");
 
 //@ts-ignore
@@ -13,10 +14,9 @@ const cloudinary = require("cloudinary").v2
 const knexInstance = knex({
     client: "postgresql",
     connection: {
-      database: "binar_chapter_5", 
-      user: "admin", 
-      password: "123456"
-      // filename: "./dev.sqlite3"
+      database: "cars_c6", 
+      user: "alfiahsanitaqwim", 
+      password: "root"
     }
 })
 
@@ -24,9 +24,9 @@ const PORT: number = 3000;
 
 Model.knex(knexInstance)
 cloudinary.config({ 
-    cloud_name: 'dvsyg1frc', 
-    api_key: '741777918221123', 
-    api_secret: '2Dmmo3DeDS5BDC55TanKIWPw0cI' 
+    cloud_name: 'djp77xipf', 
+    api_key: '477512212399319', 
+    api_secret: '***************************' 
   });
 
 
@@ -42,6 +42,7 @@ app.use(handleLogger)
 
 // separation of concern;
 app.use("/v1/cars", carRouter);
+app.use("/v1/users", userRouter);
 
 //@ts-ignore
 app.post("/v1/cars/picture", upload.single("picture"), (req, res)=> {
