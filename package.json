@@ -4,7 +4,7 @@
   "description": "## Entity Relationship Diagram (ERD)",
   "main": "index.js",
   "scripts": {
-    "dev": "npx nodemon ./src/index.ts",
+    "dev": "npx nodemon ./index.ts",
     "test": "echo \"Error: no test specified\" && exit 1",
     "migrate": "npx prisma migrate dev --name"
   },
