@@ -1,0 +1,17 @@
+openapi: 3.0.0
+info:
+  title: Binar Car Rental API
+  version: 1.0.0
+paths:
+  /v1/cars:
+    get:
+      responses:
+        "404":
+        description: Error
+        content:
+          application/json:
+            schema:
+              type: object
+            data:
+              type: object
+              properties

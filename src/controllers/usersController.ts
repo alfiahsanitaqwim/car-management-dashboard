@@ -63,10 +63,12 @@ const login  =  async (req:Request, res: Response) => {
     const token = createToken({
         // @ts-ignore
         user_id: user.user_id,
-        email: user.email, 
+        email: user.email,
+        role: user.id_role,
     })
 
     return res.status(200).json({
+        token,
         status: 200,
         message: "Successfully Logged In",
 
@@ -104,16 +106,32 @@ const authorize = async (req:Request, res:Response, next: unknown) => {
 }
 
 const isSuperAdmin = async (req:Request, res:Response) => {
-
+    try {
+        const bearerToken = req.headers.authorization;
+        const token = bearerToken?.split("Bearer ")?.[1] || "";
+        const tokenPayload:any = jwt.verify(token, process.env.SIGNATURE_KEY || "Rahasia");
+        console.log("disini");
+        console.log({bearerToken, token, tokenPayload})
+    
+        if(tokenPayload?.role === 1){
+            // asdasdasdasdas
+            return true
+        }
+        return false
+    }catch{}
 }
 
 const editRoleToAdmin = async (req:Request, res:Response) => {
     
+    console.log("disini ok");
+    res.status(200).json("sd")
 }
 
 module.exports = {
     register, 
     login,
     getUserProfile, 
-    authorize
+    authorize,
+    isSuperAdmin,
+    editRoleToAdmin
 }
