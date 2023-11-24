@@ -4,7 +4,7 @@ const express = require("express");
 const router  = express.Router();
 const carController = require("./../controllers/carsControllers")
 
-
+// Access for super admin and admin only
 router.get("/", carController.get);
 router.get("/:id",carController.getById)
 router.post("/create",carController.post);

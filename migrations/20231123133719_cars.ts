@@ -13,10 +13,12 @@ export async function up(knex: Knex): Promise<void> {
         table.string("description").notNullable();
         table.integer("id_car_type").unsigned();
         table.integer("id_car_brand").unsigned();
+        table.integer("id_customer").unsigned();
 
         // Add the foreign key constraint
         table.foreign('id_car_type').references('id_car_types').inTable('car_types');
         table.foreign("id_car_brand").references("id_car_brand").inTable("car_brands");
+        table.foreign("id_customer").references("id_customers").inTable("customers");
     })
 }
 
