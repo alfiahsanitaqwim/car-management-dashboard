@@ -1,12 +1,12 @@
 import {Model, ModelObject} from "objection";
 import { CarsModel } from './Cars';
 
-export class CarBrandsModel extends Model {
-  id_car_brand!: number;
-  brand_name!: string;
+export class CarTypesModel extends Model {
+  id_car_type!: number;
+  type_name!: string;
 
   static get tableName() {
-    return 'car_brands';
+    return 'car_types';
   }
 
   static get relationMappings() {
@@ -15,8 +15,8 @@ export class CarBrandsModel extends Model {
         relation: Model.HasManyRelation,
         modelClass: CarsModel,
         join: {
-          from: 'car_brands.id_car_brand',
-          to: 'cars.id_car_brand',
+          from: 'car_types.id_car_type',
+          to: 'cars.id_car_type',
         },
       },
     };

@@ -21,7 +21,7 @@ const register = async (req: Request, res: Response) => {
         data: registeredUser
     })
 }
-
+ 
 const login = async (req: Request, res: Response) => {
     const email = req.body.email;
     const password = req.body.password || "";

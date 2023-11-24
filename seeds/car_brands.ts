@@ -1,4 +1,5 @@
 import { Knex } from "knex";
+
 const CAR_BRANDS = "car_brands"
 
 export async function seed(knex: Knex): Promise<void> {

@@ -5,6 +5,8 @@ interface Payload{
     password: string;
 }
 
+// class for database connection need
+
 export default class UserService {
     #userRepository: UserRepository;
 
