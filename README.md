@@ -4,7 +4,7 @@
 
 Explore the API documentation [Open API](http://localhost:3000/api-docs).
 
-## Access superadmin
+## Superadmin access
 
 **Request:**
 ```json
