@@ -4,7 +4,7 @@ const CARS = "cars"
 
 export async function up(knex: Knex): Promise<void> {
     return knex.schema.createTable(CARS, (table: Knex.TableBuilder) => {
-        table.increments("id_car").primary();
+        table.uuid("id_cars").defaultTo(knex.raw("uuid_generate_v4()")).primary();
         table.string("car_name", 100).notNullable();
         table.boolean("availability").notNullable();
         table.integer("capacity").notNullable();
