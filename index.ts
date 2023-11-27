@@ -1,12 +1,12 @@
+import { config } from "./config";
+
 const {Model} = require("objection");
 const knex = require("knex")
 const expressjs = require("express");
-const ExpressT = require("express").Express;
-const isAdmin   = require("./src/middleware/isAdmin")
 const handleLogger   = require("./src/middleware/handlerLogger")
 const carRouter = require("./src/routes/carRouter");
 const userRouter = require("./src/routes/userRouter")
-const loginRouter = require("./src/routes/loginRouter")
+const authRouter = require("./src/routes/authRouter")
 const upload = require("./src/middleware/upload");
 
 const swaggerUi = require('swagger-ui-express');
@@ -22,9 +22,9 @@ const cloudinary = require("cloudinary").v2
 const knexInstance = knex({
     client: "postgresql",
     connection: {
-      database: "oke", 
+      database: config.database_name, 
       user: "postgres", 
-      password: "root"
+      password: config.database_name
     }
 })
 
@@ -50,7 +50,7 @@ app.use(handleLogger)
 // separation of concern;
 app.use("/v1/cars", carRouter);
 app.use("/v1/users", userRouter);
-app.use("/v1", loginRouter)
+app.use("/v1", authRouter)
 
 //@ts-ignore
 app.post("/v1/cars/picture", upload.single("picture"), (req, res)=> {

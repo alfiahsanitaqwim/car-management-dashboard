@@ -1,12 +1,13 @@
 import type { Knex } from "knex";
+import { config } from "./config";
 
 module.exports = {
   development: {
     client: "postgresql",
     connection: {
       database: "cars_c6", 
-      user: "alfiahsanitaqwim", 
-      password: "root"
+      user: config.database_name, 
+      password: config.database_password
       // filename: "./dev.sqlite3"
     }
   },

@@ -3,6 +3,7 @@ import UserService from "../services/users";
 import jwt from "jsonwebtoken";
 
 const checkPassword = require("../utilities/checkPassword");
+const  encryptPassword = require("../utilities/encryptPassword")
 
 interface UserPayload {
     email: string
@@ -50,3 +51,24 @@ export const login  =  async (req:Request, res: Response) => {
 
     })
 }
+
+export const register = async (req: Request, res: Response) => {
+    const email = req.body.email;
+    const password = req.body.password || "";
+
+    try {
+        const encryptedPassword = await encryptPassword(password);
+
+        await new UserService().post({ email, password: encryptedPassword });
+
+        return res.json({
+            message: "Success",
+            data: []
+        });
+        
+    } catch (error) {
+        return res.status(500).json({
+            message: "Registration failed"
+        });
+    }
+};

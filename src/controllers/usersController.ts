@@ -1,31 +1,8 @@
-import { Request, Response, NextFunction } from "express";
+import { Request, Response } from "express";
 import jwt from "jsonwebtoken";
-import UserService from "../services/users";
 import { UserModel } from "../models/User";
 import { userRole } from "./userRolesController";
 
-const  encryptPassword = require("./../utilities/encryptPassword")
-
-export const register = async (req: Request, res: Response) => {
-    const email = req.body.email;
-    const password = req.body.password || "";
-
-    try {
-        const encryptedPassword = await encryptPassword(password);
-
-        await new UserService().post({ email, password: encryptedPassword });
-
-        return res.json({
-            message: "Success",
-            data: []
-        });
-        
-    } catch (error) {
-        return res.status(500).json({
-            message: "Registration failed"
-        });
-    }
-};
 
 export const updateRole = async (req:Request, res:Response) => {    
     const isSA = await userRole({
