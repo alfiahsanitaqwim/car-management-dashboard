@@ -1,6 +1,5 @@
 import { Knex } from "knex";
 
-const {v4: uuidv4} = require("uuid");
 export async function seed(knex: Knex): Promise<void> {
     // Deletes ALL existing entries
     await knex("cars").del();
@@ -8,7 +7,7 @@ export async function seed(knex: Knex): Promise<void> {
     // Inserts seed entries
     await knex("cars").insert([
         {
-            id: uuidv4,
+            id_cars: 1,
             car_name: "Brio",
             availability: true,
             capacity: 4,
@@ -20,7 +19,7 @@ export async function seed(knex: Knex): Promise<void> {
             id_customer: 1
         },
         {
-            id: uuidv4,
+            id_cars: 2,
             car_name: "Toyota",
             availability: true,
             capacity: 4,
