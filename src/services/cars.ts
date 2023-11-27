@@ -1,4 +1,5 @@
 import CarRepository from "../repositories/cars";
+import { Request, Response } from "express";
 
 export default class CarService {
     #carRepository: CarRepository;
@@ -11,21 +12,19 @@ export default class CarService {
         return await this.#carRepository.getAll();
     }
 
-    async getById(){
-        // ...
+    async getById(id:any){
+        return await this.#carRepository.getById(id);
     }
 
-    async post(){
-        // ...
+    async post(req: Request){
+        return await this.#carRepository.post(req);
     }
 
-    async delete(){
-        // ...
+    async delete(id: any, req: Request){
+        return await this.#carRepository.delete(id, req);
     }
 
-    async update(){
-        // ...
+    async update(req: Request){
+        return await this.#carRepository.update(req);
     }
-
-    // ...
 }

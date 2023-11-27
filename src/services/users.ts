@@ -5,7 +5,6 @@ interface Payload {
     password?: string;
 }
 
-
 /**
  * class untuk kebutuhan database connection
  */
@@ -16,8 +15,7 @@ export default class UserService {
     constructor(){
         this.#userRepository = new UserRepository();
     }
-
-
+    
     async post(param: Payload){
         return await this.#userRepository.post(param);
     }
