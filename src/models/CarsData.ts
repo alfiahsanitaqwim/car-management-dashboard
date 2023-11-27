@@ -1,17 +1,18 @@
 import { Model, ModelObject } from "objection";
 
-export class CarsData extends Model {
-  id!: number;
-  type!: string;
-  name!: string;
-  brand!: string;
-  year!: number;
-  rent_price!: number;
-  img_path!: string;
+export class CarsDataModel extends Model {
+  id_car!: number;
+  car_name!: string;
+  availability!: boolean;
+  capacity!: number;
+  image_url!: string;
+  price!: number;
+  description!: string;
+  id_car_type!: string;
+  id_car_brand!: string;
+  id_customer!: string;
 
   static get tableName() {
     return "cars";
   }
 }
-
-export type CarsDataModel = ModelObject<CarsData>;

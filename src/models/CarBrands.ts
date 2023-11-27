@@ -8,6 +8,3 @@ export class CarBrandsModel extends Model {
         return "car_brands";
     }
 }
-
-
-export type CarBrands = ModelObject<CarBrandsModel>
