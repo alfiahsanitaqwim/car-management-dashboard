@@ -1,125 +1,128 @@
-import { CarBrandsModel } from "../models/CarBrands";
 import CarService from "../services/cars";
+import { Request, Response } from "express";
+import { userRole } from "./userRolesController";
 
-const Request  = require("express").Request;
-const Response  = require("express").Response;
-const {v4: uuidv4} = require("uuid");
-
-//  
-const get = async (req:Request, res: Response)=> { 
-    // const getAll  = await new CarService().getAll();
-    //@ts-ignore
-    // res.status(200).json({
-    //     message: "Success",
-    //     data: getAll
-    // });
-
-    new CarService().getAll().then((response)=> {
-        console.log({response});
-        //@ts-ignore
-        res.status(200).json({
-            message: "success", 
-            data: response
-        })
-
-    }).catch((err)=> {
-        //@ts-ignore
-        res.status(200).json({
-            message: "success", 
-            data: err
-        })
-    })
-
-}
-
-const post = async (req: Request, res: Response)=> {
-    const reqBody = req.body;
-    //@ts-ignore
-   
-    const id_car_brand = reqBody.id
-   
-    //@ts-ignore
-    const name = reqBody?.name
+export const get = async (req:Request, res: Response)=> { 
+    const role = await userRole({
+        access:  "superandadmin",
+        req:req,
+    });
     
-    const postCar = await CarBrandsModel.query().insert({id_car_brand, name}).returning("*");
-    // const newId = uuidv4().number;
-    //@ts-ignore
-
-    return res.json(postCar);
-
-
-
-//@ts-ignore
-    // const newCarList = [...carListData, newObjCarWithId]
-   
-}
-
-const getById = async (req:Request, res:Response) => {
-    
-    //@ts-ignore
-    const id = Number(req.params.id);
-
-    try {
-        const getData = await CarBrandsModel.query().where("id_car_brand", id)
-        // @ts-ignore
-        return res.json(getData);
-    } catch (error) {
-        // @ts-ignore
-        return res.json(error)
+    if (role) {
+        new CarService().getAll().then((response)=> {
+            console.log({response});
+            res.status(200).json({
+                message: "success", 
+                data: response
+            })
+        }).catch((err)=> {
+            res.status(200).json({
+                message: "success", 
+                data: err
+            })
+        })
+    } else {
+        res.status(500).json({
+            message: "Unauthorized. Action is denied", 
+        })
     }
-  
-
-    // CarBrandsModel.query().where("id_car_brand", id).then((response)=> {
-    //     //@ts-ignore
-    //     return res.json(response)
-    // })
-    // .catch((err)=> {
-    //      //@ts-ignore
-    //     return res.status(404).json({
-    //         status: "Error", 
-    //         message: "not found"
-    //     })
-    // })
-    
 }
 
+export const getById = async (req:Request, res:Response) => {
+    const role = await userRole({
+        req,
+        access: "superandadmin"
+    });
+    const id = req.params.id;
+    if (role) {
+        new CarService().getById(id).then((response)=> {
+            res.status(200).json({
+                message: "Get by id succesfully", 
+                data: response
+            })
+        }).catch((err)=> {
+            res.status(200).json({
+                message: "error", 
+                data: err
+            })
+        })
+    } else {
+        res.status(500).json({
+            message: "Unauthorized. Action is denied", 
+        })
+    }
+}
 
-const deleteById = async (req:Request, res: Response) => {
-         //@ts-ignore
+export const post = async (req: Request, res: Response)=> {  
+    const role = await userRole({
+        req,
+        access: "superandadmin"
+    });
+    if(role){
+        new CarService().post(req).then((response)=> {
+            res.status(200).json({
+                message: "Create successfully", 
+                data: response
+            })
+        }).catch((err)=> {
+            res.status(200).json({
+                message: "error", 
+                data: err
+            })
+        })
+    }else{
+        res.status(500).json({
+            message: "Unauthorized. Action is denied", 
+        })
+    }
+}
 
+export const deleteById = async (req:Request, res: Response) => {
+    const role = await userRole({
+        req,
+        access: "superandadmin"
+    });
     const reqParam  = req.params;
-    const id_car_brand = Number(reqParam.id);
-
-    const deleteData  = await CarBrandsModel.query().where("id_car_brand", id_car_brand).del();
-
-         //@ts-ignore
-        return res.json({
-            status: 'OK', 
-            message: deleteData
-        });
+    const id_car = Number(reqParam.id);
+    if (role) {
+        new CarService().delete(id_car, req).then((response)=> {
+            res.status(200).json({
+                message: "Delete successfully", 
+                data: response
+            })
+        }).catch((err)=> {
+            res.status(200).json({
+                message: "error", 
+                data: err
+            })
+        })
+    } else{
+        res.status(500).json({
+            message: "Unauthorized. Action is denied", 
+        })
+    }
 }
 
-const updateById = async (req:Request, res: Response) => {
-    const reqBody = req.body;
-     //@ts-ignore
-    const reqParam  = req.params;
-    //@ts-ignore
-   
-    const id_car_brand = Number(reqParam.id)
-   
-    //@ts-ignore
-    const name = reqBody?.name
- //@ts-ignore
-    const update  = await CarBrandsModel.query().where("id_car_brand", '=', id_car_brand).update({name})
-      //@ts-ignore
-    
-    return res.json(update);
-}
-
-module.exports = {
-    get, 
-    getById, 
-    post, 
-    deleteById, 
-    updateById
+export const updateById = async (req:Request, res: Response) => {
+    const role = await userRole({
+        req,
+        access: "superandadmin"
+    });
+    if (role) {
+        new CarService().update(req).then((response)=> {
+            res.status(200).json({
+                message: "Update successfully", 
+                data: response
+            })
+        }).catch((err)=> {
+            res.status(200).json({
+                message: "error", 
+                data: err
+            })
+        })
+    }else{
+        res.status(500).json({
+            message: "Unauthorized. Action is denied", 
+        })
+    }
 }

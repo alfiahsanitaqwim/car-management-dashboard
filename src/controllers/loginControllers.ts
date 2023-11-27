@@ -1,51 +1,52 @@
 import { Request, Response } from "express";
-import { UserModel } from "../models/User";
+import UserService from "../services/users";
+import jwt from "jsonwebtoken";
 
-const {v4: uuidv4} = require("uuid");
-const encryptPassword = require("./../utilities/encryptPassword");
-const checkPassword = require("./../utilities/checkPassword");
+const checkPassword = require("../utilities/checkPassword");
 
-const loginPage = async (req: Request, res: Response) => {
-    res.status(200).render('loginPage', {})
+interface UserPayload {
+    email: string
+    password?: string
 }
 
-const login = async (req: Request, res: Response) => {
-    const email = req.body.email;
-    const password = req.body.password;
+export const createToken = (payload: UserPayload) => {
+    return jwt.sign(payload, process.env.SIGNATURE_KEY || "Rahasia")
+} 
 
-    const user = await UserModel.query().findOne({
-        email: email,
-    })
+// export const loginPage = async (req: Request, res: Response) => {
+//     res.status(200).render('loginPage', {})
+// }
+
+export const login  =  async (req:Request, res: Response) => {
+    const email = req.body.email.toLowerCase().trim();
+    const password = req.body.password || "";
+    const user = await new UserService().get({email});
 
     if(!user){
-        res.status(404).json({
-            message: "Email not found"
-        });
-        return;
+        return res.status(404).json({
+            message: "Email doesn't not exist, try another one!"
+        })
     }
 
-    const isPasswordCorrect = await checkPassword(
-        user.password,
-        password
-    );
+    const passwordChecked = await checkPassword(user.password, password)
 
-    if(!isPasswordCorrect){
-        res.status(401).json({
-            message: "Uncorrect password"
-        });
-        return;
+    if(!passwordChecked){
+        return res.status(401).json({
+            message: "Uncorrect password, try again!"
+        })
     }
 
-    // res.status(201).json({
-    //     id: user.id,
-    //     email: userController.email,
-    //     token: "thisIsToken",
-    //     createdAt: user.created_at,
-    //     updatedAt: user.updated_at,
-    // });
-}
+    const token = createToken({
+        // @ts-ignore
+        user_id: user.user_id,
+        email: user.email,
+        role: user.id_role,
+    })
 
-module.exports = {
-    loginPage,
-    login,
+    return res.status(200).json({
+        token,
+        status: 200,
+        message: "Successfully Logged In",
+
+    })
 }

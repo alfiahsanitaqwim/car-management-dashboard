@@ -6,7 +6,15 @@ const isAdmin   = require("./src/middleware/isAdmin")
 const handleLogger   = require("./src/middleware/handlerLogger")
 const carRouter = require("./src/routes/carRouter");
 const userRouter = require("./src/routes/userRouter")
+const loginRouter = require("./src/routes/loginRouter")
 const upload = require("./src/middleware/upload");
+
+const swaggerUi = require('swagger-ui-express');
+const fs = require("fs")
+const YAML = require('yaml')
+const file  = fs.readFileSync('./openAPI.yaml', 'utf8')
+const swaggerDocument = YAML.parse(file)
+
 
 //@ts-ignore
 const app: Express = expressjs();
@@ -14,8 +22,8 @@ const cloudinary = require("cloudinary").v2
 const knexInstance = knex({
     client: "postgresql",
     connection: {
-      database: "cars_c6", 
-      user: "alfiahsanitaqwim", 
+      database: "oke", 
+      user: "postgres", 
       password: "root"
     }
 })
@@ -31,11 +39,9 @@ cloudinary.config({
 });
 
 
-// to set up view engine tools using ejs
 app.set("view engine", "ejs");
-
-// to custom default views pathname in ejs
 app.set("views","./src/views")
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 app.use(expressjs.static("public"))
 app.use(expressjs.urlencoded())
 app.use(handleLogger)
@@ -44,6 +50,7 @@ app.use(handleLogger)
 // separation of concern;
 app.use("/v1/cars", carRouter);
 app.use("/v1/users", userRouter);
+app.use("/v1", loginRouter)
 
 //@ts-ignore
 app.post("/v1/cars/picture", upload.single("picture"), (req, res)=> {
