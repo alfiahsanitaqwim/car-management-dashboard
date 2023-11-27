@@ -4,11 +4,10 @@ const express = require("express");
 const router  = express.Router();
 const carController = require("./../controllers/carsControllers")
 
-// Access for super admin and admin only
 router.get("/", carController.get);
 router.get("/:id",carController.getById)
 router.post("/create",carController.post);
+router.put("/update/:id", carController.updateById)
 router.delete("/delete/:id", carController.deleteById);
-router.put("/:id", carController.updateById)
 
 module.exports = router;
