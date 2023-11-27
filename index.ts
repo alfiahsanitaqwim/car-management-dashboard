@@ -23,7 +23,7 @@ const knexInstance = knex({
     client: "postgresql",
     connection: {
       database: config.database_name, 
-      user: "postgres", 
+      user: config.user, 
       password: config.database_name
     }
 })

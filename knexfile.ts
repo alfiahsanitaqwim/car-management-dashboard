@@ -5,8 +5,8 @@ module.exports = {
   development: {
     client: "postgresql",
     connection: {
-      database: "cars_c6", 
-      user: config.database_name, 
+      database: config.database_name, 
+      user: config.user, 
       password: config.database_password
       // filename: "./dev.sqlite3"
     }
