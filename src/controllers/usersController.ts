@@ -5,12 +5,12 @@ import { userRole } from "./userRolesController";
 
 
 export const updateRole = async (req:Request, res:Response) => {    
-    const isSA = await userRole({
+    const isSuperAdmin = await userRole({
         req,
         access: "superadmin"
     });
     const {id, to_role} = req.body;
-    if(isSA){
+    if(isSuperAdmin){
         await UserModel.query().where('id', '=', id).update({id_role: to_role})
         res.json({
                 "status": "Success",

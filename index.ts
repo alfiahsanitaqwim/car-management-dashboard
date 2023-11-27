@@ -50,7 +50,7 @@ app.use(handleLogger)
 // separation of concern;
 app.use("/v1/cars", carRouter);
 app.use("/v1/users", userRouter);
-app.use("/v1", authRouter)
+app.use("/v1/auth", authRouter)
 
 //@ts-ignore
 app.post("/v1/cars/picture", upload.single("picture"), (req, res)=> {

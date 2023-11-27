@@ -63,12 +63,12 @@ export const register = async (req: Request, res: Response) => {
 
         return res.json({
             message: "Success",
-            data: []
         });
         
     } catch (error) {
         return res.status(500).json({
-            message: "Registration failed"
+            message: "Registration failed",
+            error: error
         });
     }
 };

@@ -3,11 +3,20 @@ info:
   title: Binar Car Rental User Management API
   version: 1.0.0
   description: Alfi Ahsani Taqwim
+tags:
+  - name: cars
+    description: CRUD Cars
+  - name: auth
+    description: Register and login
+  - name: user
+    description: Operations about user
 
 paths:
   # LIST CARS 
   /v1/cars:
     get:
+      tags:
+        - cars
       summary: Get Cars List
       responses:
         '200':
@@ -31,6 +40,8 @@ paths:
   # GET ONE BY ID CARS
   /v1/cars/{id}:
     get:
+      tags:
+        - cars
       summary: Get One Cars
       responses:
         '200':
@@ -54,6 +65,8 @@ paths:
   # CREATE CARS
   /v1/cars/create:
     post:
+      tags:
+        - cars
       summary: Create Car
       components:
         securitySchemes:
@@ -85,6 +98,8 @@ paths:
   /v1/cars/update/{id}:
     key: x
     put:
+      tags:
+        - cars
       summary: Update Car
       components:
         securitySchemes:
@@ -115,6 +130,8 @@ paths:
   # DELETE CARS
   /v1/cars/delete/{id}:
     delete:
+      tags:
+        - cars
       summary: Delete Car
       components:
         securitySchemes:
@@ -127,3 +144,99 @@ paths:
           description: The car has been deleted
         '400':
           description: Invalid input
+
+  # LOGIN
+  /v1/auth/login:
+    post:
+      tags:
+        - auth
+      summary: Logs user into the system
+      parameters:
+        - name: email
+          in: query
+          description: The email for login
+          required: false
+          schema:
+            type: string
+        - name: password
+          in: query
+          description: The password for login in clear text
+          required: false
+          schema:
+            type: string
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/xml:
+              schema:
+                type: string
+            application/json:
+              schema:
+                type: string
+        '400':
+          description: Invalid username/password supplied
+  # REGISTER
+  /v1/auth/register:
+    post:
+      tags:
+        - auth
+      summary: Registers user into the system
+      parameters:
+        - name: email
+          in: query
+          description: The email register
+          required: false
+          schema:
+            type: string
+        - name: password
+          in: query
+          description: The password for register in clear text
+          required: false
+          schema:
+            type: string
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/xml:
+              schema:
+                type: string
+            application/json:
+              schema:
+                type: string
+        '400':
+          description: Invalid username/password supplied
+
+  # UPDATE CARS
+  /v1/users/update/{id}:
+    put:
+      tags:
+        - user
+      summary: Update Car
+      components:
+        securitySchemes:
+          bearerAuth:
+            type: http
+            scheme: bearer
+            bearerFormat: JWT
+      requestBody:
+        required: true
+        content:
+          application/json:
+            example:
+              car_name: "Fish"
+              availability: false
+              capacity: 4
+              image_url: "https:ayla.jpg"
+              price: 88
+              description: "ini desc"
+              id_car_brand: 1
+              id_car_type: 1
+              id_customer: 1
+      responses:
+        '201':
+          description: The car has been updated
+        '400':
+          description: Invalid input
+  
