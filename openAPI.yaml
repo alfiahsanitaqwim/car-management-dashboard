@@ -1,17 +1,129 @@
 openapi: 3.0.0
 info:
-  title: Binar Car Rental API
+  title: Binar Car Rental User Management API
   version: 1.0.0
+  description: Alfi Ahsani Taqwim
+
 paths:
+  # LIST CARS 
   /v1/cars:
     get:
+      summary: Get Cars List
       responses:
-        "404":
-        description: Error
+        '200':
+          description: A list of cars
+          content:
+            application/json:
+              example:
+                message: success
+                data:
+                  - id_car: "6"
+                    car_name: brio
+                    availability: false
+                    capacity: 4
+                    image_url: "https:ayla.jpg"
+                    price: 88
+                    description: "ini desc"
+                    id_car_type: 1
+                    id_car_brand: 1
+                    id_customer: 1
+
+  # GET ONE BY ID CARS
+  /v1/cars/{id}:
+    get:
+      summary: Get One Cars
+      responses:
+        '200':
+          description: Get By id cars
+          content:
+            application/json:
+              example:
+                message: Get by id succesfully
+                data:
+                  id_car: "6"
+                  car_name: brio
+                  availability: false
+                  capacity: 4
+                  image_url: "https:ayla.jpg"
+                  price: 88
+                  description: "ini desc"
+                  id_car_type: 1
+                  id_car_brand: 1
+                  id_customer: 1
+
+  # CREATE CARS
+  /v1/cars/create:
+    post:
+      summary: Create Car
+      components:
+        securitySchemes:
+          bearerAuth:
+            type: http
+            scheme: bearer
+            bearerFormat: JWT
+      requestBody:
+        required: true
         content:
           application/json:
-            schema:
-              type: object
-            data:
-              type: object
-              properties
+            example:
+              car_name: "Fish"
+              availability: false
+              capacity: 4
+              image_url: "https:ayla.jpg"
+              price: 88
+              description: "ini desc"
+              id_car_brand: 1
+              id_car_type: 1
+              id_customer: 1
+      responses:
+        '201':
+          description: The car has been added
+        '400':
+          description: Invalid input
+          
+  # UPDATE CARS
+  /v1/cars/update/{id}:
+    key: x
+    put:
+      summary: Update Car
+      components:
+        securitySchemes:
+          bearerAuth:
+            type: http
+            scheme: bearer
+            bearerFormat: JWT
+      requestBody:
+        required: true
+        content:
+          application/json:
+            example:
+              car_name: "Fish"
+              availability: false
+              capacity: 4
+              image_url: "https:ayla.jpg"
+              price: 88
+              description: "ini desc"
+              id_car_brand: 1
+              id_car_type: 1
+              id_customer: 1
+      responses:
+        '201':
+          description: The car has been updated
+        '400':
+          description: Invalid input
+  
+  # DELETE CARS
+  /v1/cars/delete/{id}:
+    delete:
+      summary: Delete Car
+      components:
+        securitySchemes:
+          bearerAuth:
+            type: http
+            scheme: bearer
+            bearerFormat: JWT
+      responses:
+        '201':
+          description: The car has been deleted
+        '400':
+          description: Invalid input
