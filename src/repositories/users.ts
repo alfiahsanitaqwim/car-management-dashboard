@@ -10,12 +10,10 @@ export default class UserRepository {
         const email  = param.email;
         const password  = param.password;
 
-        return await UserModel.query().insert({email, password}).returning("*"); 
+        return await UserModel.query().insert({email, password, id_role: 3}).returning("*"); 
     };
 
     async get(email: string){
-        // const password = param.password;
-
         return await UserModel.query().findOne({email}).returning("*");
     }
 
