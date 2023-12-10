@@ -34,6 +34,10 @@ const CreateCars = () => {
 
   return (
     <div>
+      <button onClick={() => {
+        localStorage.clear();
+        navigate('/login')
+      }}>logout</button>
       <label>name</label>
       <input
         type="text"
