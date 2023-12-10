@@ -26,7 +26,6 @@ function List() {
         url: `/cars`,
         callback: (obj: any) => {
           setList(obj);
-
         },
       });
     })();
@@ -45,23 +44,13 @@ function List() {
   }, []);
 
   const DeleteCars = async (id: any) => {
-    await axios
-      .post(
-        `http://localhost:3000/v1/cars/delete/${id}`,
-        {},
-        {
-          headers: {
-            Authorization: `Bearer ${TOKEN}`,
-            "Content-Type": "application/x-www-form-urlencoded",
-          },
-        }
-      )
-      .then(({ data }: any) => {
+    HTTP.Post({
+      url: `/cars/delete/${id}`,
+      body: {},
+      callback: () => {
         window.location.reload();
-      })
-      .catch((z: any) => {
-        console.error(z);
-      });
+      },
+    });
   };
   return (
     <div>
