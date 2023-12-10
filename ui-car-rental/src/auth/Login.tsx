@@ -27,9 +27,9 @@ const Login = () => {
   };
 
   return (
-    <div>
-      <div>
-        <label>email</label>
+    <div style={{marginLeft: 20}}>
+      <div style={{ marginTop: 20 }}>
+        <div>Your email</div>
         <input
           value={form.email}
           type="text"
@@ -41,8 +41,8 @@ const Login = () => {
           }
         />
       </div>
-      <div>
-        <label>password</label>
+      <div style={{ marginTop: 20 }}>
+        <div>Your Password</div>
         <input
           value={form.password}
           type="password"
@@ -54,9 +54,12 @@ const Login = () => {
           }
         />
       </div>
-      <button type="submit" onClick={submitLogin}>
-        Sign In
-      </button>
+      <div style={{ marginTop: 20 }}>
+        <button type="submit" onClick={submitLogin}>
+          Login
+        </button>
+      </div>
+      
     </div>
   );
 };

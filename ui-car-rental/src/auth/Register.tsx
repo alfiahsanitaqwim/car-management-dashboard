@@ -24,9 +24,9 @@ const Register = () => {
   };
 
   return (
-    <div>
-      <div>
-        <label>email</label>
+    <div style={{marginLeft: 20}}>
+     <div style={{ marginTop: 20 }}>
+        <div>Your email</div>
         <input
           value={form.email}
           type="text"
@@ -38,8 +38,8 @@ const Register = () => {
           }
         />
       </div>
-      <div>
-        <label>password</label>
+      <div style={{ marginTop: 20 }}>
+        <div>Your Password</div>
         <input
           value={form.password}
           type="password"
@@ -51,9 +51,12 @@ const Register = () => {
           }
         />
       </div>
-      <button type="submit" onClick={submitRegister}>
-        Sign In
-      </button>
+      <div style={{ marginTop: 20 }}>
+        <button type="submit" onClick={submitRegister}>
+          Register
+        </button>
+      </div>
+      
     </div>
   );
 };

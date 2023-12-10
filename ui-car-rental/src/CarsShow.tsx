@@ -24,6 +24,10 @@ const CarsShow = () => {
   
   return <div>
     <div>{obj.car_name}</div>
+    <div>{obj.availability}</div>
+    <div>{obj.capacity}</div>
+    <div>{obj.image_url}</div>
+    <div>{obj.price}</div>
     <div>{obj.description}</div>
   </div>;
 };
