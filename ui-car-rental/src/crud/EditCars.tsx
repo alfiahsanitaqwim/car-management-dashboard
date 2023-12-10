@@ -3,6 +3,7 @@ import React from "react";
 import { TOKEN } from "../config/token";
 import { NavLink, useNavigate, useParams } from "react-router-dom";
 import Logout from "../components/logout";
+import HTTP from "../service/http";
 
 const EditCars = () => {
   let { id } = useParams();
@@ -17,10 +18,9 @@ const EditCars = () => {
 
   React.useEffect(() => {
     (async () => {
-      await axios
-        .get("http://localhost:3000/v1/cars/" + id)
-        .then(({ data }: any) => {
-          let obj = data?.data;
+      HTTP.Get({
+        url: `/cars/${id}`,
+        callback: (obj: any) => {
           setForm({
             car_name: obj.car_name,
             availability: obj.availability,
@@ -29,10 +29,8 @@ const EditCars = () => {
             price: obj.price,
             description: obj.description,
           });
-        })
-        .catch((z: any) => {
-          console.error(z);
-        });
+        },
+      });
     })();
   }, []);
 

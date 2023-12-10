@@ -3,6 +3,7 @@ import React from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import Logout from "../components/logout";
 import { TOKEN } from "../config/token";
+import HTTP from "../service/http";
 
 interface PropsListCars {
   id_cars: number;
@@ -21,14 +22,13 @@ function List() {
   const [list, setList] = React.useState<any>([]);
   React.useEffect(() => {
     (async () => {
-      await axios
-        .get("http://localhost:3000/v1/cars")
-        .then(({ data }: any) => {
-          setList(data.data);
-        })
-        .catch((z: any) => {
-          console.error(z);
-        });
+      HTTP.Get({
+        url: `/cars`,
+        callback: (obj: any) => {
+          setList(obj);
+
+        },
+      });
     })();
   }, []);
 
@@ -87,7 +87,9 @@ function List() {
             {isAuth && (
               <div>
                 <button onClick={() => DeleteCars(dt.id_cars)}>Delete</button>
-                <NavLink to={`/cars/${dt?.id_cars}/edit`}>Edit</NavLink>
+                <NavLink to={`/cars/${dt?.id_cars}/edit`}>
+                  <button>Edit</button>
+                </NavLink>
               </div>
             )}
           </div>
