@@ -36,7 +36,7 @@ const Login = () => {
           onChange={(e: any) =>
             setForm({
               ...form,
-              car_name: e.target.value,
+              email: e.target.value,
             })
           }
         />
@@ -49,7 +49,7 @@ const Login = () => {
           onChange={(e: any) =>
             setForm({
               ...form,
-              capacity: e.target.value,
+              password: e.target.value,
             })
           }
         />
