@@ -4,7 +4,7 @@ const express = require("express");
 const router = express.Router();
 const userController = require("./../controllers/usersController");
 
-router.put("/update/role", userController.updateRole)
-router.get("/current/user", userController.getCurrentUser) 
+router.put("/update-role", userController.updateRole)
+router.get("/current-user", userController.getCurrentUser) 
 
 module.exports = router;
