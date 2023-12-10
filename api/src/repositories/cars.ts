@@ -38,7 +38,7 @@ export default class CarRepository {
     }
 
     async getById(id: any) {
-        return await CarsDataModel.query().where("id_car", id).first();
+        return await CarsDataModel.query().where("id_cars", id).first();
     }
 
     async update(req: Request) {
@@ -60,7 +60,7 @@ export default class CarRepository {
         const logDesc = `User email address ${email} create car named ${car_name}, type ${id_car_type}, and brand ${id_car_brand}, at ${new Date()}`;
         await LogAct(1, logDesc)
 
-        return await CarsDataModel.query().where("id_car", '=', id_car).update({
+        return await CarsDataModel.query().where("id_cars", '=', id_car).update({
             car_name,
             availability,
             capacity,
@@ -74,11 +74,11 @@ export default class CarRepository {
     }
 
     async delete(id: any, req: Request) {
-        const takeID = await CarsDataModel.query().where("id_car", id).first();
+        const takeID = await CarsDataModel.query().where("id_cars", id).first();
         const email = getEmail(req);
         const logDesc = `User email address ${email} create car named ${takeID?.car_name}, type ${takeID?.id_car_type}, and brand ${takeID?.id_car_brand}, at ${new Date()}`;
         await LogAct(1, logDesc)
 
-        return await CarsDataModel.query().where("id_car", id).del();
+        return await CarsDataModel.query().where("id_cars", id).del();
     }
 }
