@@ -9,6 +9,7 @@ import CreateCars from "./crud/CreateCars";
 import Login from "./auth/Login";
 import Register from "./auth/Register";
 import List from "./crud/List";
+import EditCars from "./crud/EditCars";
 
 const router = createBrowserRouter([
   {
@@ -30,6 +31,10 @@ const router = createBrowserRouter([
   {
     path: "/cars/:id",
     element: <CarsShow />,
+  },
+  {
+    path: "/cars/:id/edit",
+    element: <EditCars />,
   },
 ]);
 
@@ -57,6 +62,10 @@ const routerAuthorization = createBrowserRouter([
   {
     path: "/cars-create",
     element: <CreateCars />,
+  },
+  {
+    path: "/cars/:id/edit",
+    element: <EditCars />,
   },
 ]);
 

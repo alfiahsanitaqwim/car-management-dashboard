@@ -85,7 +85,10 @@ function List() {
               <div>{dt?.description}</div>
             </div>
             {isAuth && (
-              <button onClick={() => DeleteCars(dt.id_cars)}>Delete</button>
+              <div>
+                <button onClick={() => DeleteCars(dt.id_cars)}>Delete</button>
+                <NavLink to={`/cars/${dt?.id_cars}/edit`}>Edit</NavLink>
+              </div>
             )}
           </div>
         );
