@@ -8,6 +8,7 @@ import CarsShow from "./CarsShow";
 import CreateCars from "./crud/CreateCars";
 import Login from "./auth/Login";
 import Register from "./auth/Register";
+import List from "./crud/List";
 
 const router = createBrowserRouter([
   {
@@ -21,6 +22,10 @@ const router = createBrowserRouter([
   {
     path: "/register",
     element: <Register />,
+  },
+  {
+    path: "/cars",
+    element: <List />,
   },
   {
     path: "/cars/:id",
@@ -40,6 +45,10 @@ const routerAuthorization = createBrowserRouter([
   {
     path: "/register",
     element: <Register />,
+  },
+  {
+    path: "/cars",
+    element: <List />,
   },
   {
     path: "/cars/:id",

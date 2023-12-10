@@ -8,6 +8,6 @@ router.get("/", carController.get);
 router.get("/:id",carController.getById)
 router.post("/create",carController.post);
 router.put("/update/:id", carController.updateById)
-router.delete("/delete/:id", carController.deleteById);
+router.post("/delete/:id", carController.deleteById);
 
 module.exports = router;

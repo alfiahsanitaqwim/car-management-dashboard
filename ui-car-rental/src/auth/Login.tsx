@@ -19,7 +19,7 @@ const Login = () => {
       .then(function ({data}) {
         localStorage.setItem('token', data?.token)
 
-        navigate("/");
+        navigate("/cars");
       })
       .catch(function (error) {
         console.log(error);

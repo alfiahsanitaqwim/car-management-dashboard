@@ -2,6 +2,7 @@ import axios from "axios";
 import React from "react";
 import { TOKEN } from "../config/token";
 import { useNavigate } from "react-router-dom";
+import Logout from "../components/logout";
 
 const CreateCars = () => {
   const [form, setForm] = React.useState<any>({
@@ -34,10 +35,7 @@ const CreateCars = () => {
 
   return (
     <div>
-      <button onClick={() => {
-        localStorage.clear();
-        navigate('/login')
-      }}>logout</button>
+      <Logout/>
       <label>name</label>
       <input
         type="text"
