@@ -35,6 +35,21 @@ const HTTP = {
         console.error(z);
       });
   },
+  Put: async ({ url, body, callback }: PropsPost) => {
+    await axios
+      .post(BASE_URL + url, body, {
+        headers: {
+          Authorization: `Bearer ${TOKEN}`,
+          "Content-Type": "application/x-www-form-urlencoded",
+        },
+      })
+      .then(({ data }: any) => {
+        callback(data?.data);
+      })
+      .catch((z: any) => {
+        console.error(z);
+      });
+  },
 };
 
 export default HTTP;

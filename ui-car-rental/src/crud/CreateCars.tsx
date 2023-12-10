@@ -3,6 +3,7 @@ import React from "react";
 import { TOKEN } from "../config/token";
 import { useNavigate } from "react-router-dom";
 import Logout from "../components/logout";
+import HTTP from "../service/http";
 
 const CreateCars = () => {
   const [form, setForm] = React.useState<any>({
@@ -16,26 +17,18 @@ const CreateCars = () => {
   const navigate = useNavigate();
 
   const submitCars = async () => {
-    await axios
-      .post("http://localhost:3000/v1/cars/create", form, {
-        headers: {
-          Authorization: `Bearer ${TOKEN}`,
-          "Content-Type": "application/x-www-form-urlencoded",
-        },
-      })
-      .then(function (response) {
-        console.log(response);
-
+    HTTP.Post({
+      url: `/cars/create`,
+      body: form,
+      callback: () => {
         navigate("/");
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
+      },
+    });
   };
 
   return (
     <div>
-      <Logout/>
+      <Logout />
       <label>name</label>
       <input
         type="text"

@@ -35,19 +35,13 @@ const EditCars = () => {
   }, []);
 
   const submitCars = async () => {
-    await axios
-      .put(`http://localhost:3000/v1/cars/update/${id}`, form, {
-        headers: {
-          Authorization: `Bearer ${TOKEN}`,
-          "Content-Type": "application/x-www-form-urlencoded",
-        },
-      })
-      .then(function (response) {
+    HTTP.Put({
+      url: `/cars/update/${id}`,
+      body: form,
+      callback: () => {
         window.location.reload();
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
+      },
+    });
   };
 
   return (
