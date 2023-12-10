@@ -1,5 +1,6 @@
 import axios from "axios";
 import React from "react";
+import { NavLink } from "react-router-dom";
 
 interface PropsListCars {
   id_cars: number;
@@ -36,7 +37,9 @@ function App() {
             key={index}
             style={{ backgroundColor: "lightgrey", padding: 10, margin: 10 }}
           >
-            <div>{dt?.car_name}</div>
+            <NavLink to={`/cars/${dt.id_cars}`}>
+              <div>{dt?.car_name}</div>
+            </NavLink>
             <div>{dt?.description}</div>
           </div>
         );
