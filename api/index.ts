@@ -38,6 +38,13 @@ cloudinary.config({
   api_secret: 'puwH-ffmZk-VWjkqNtuxMtc09sk' 
 });
 
+app.use((req:any, res:any, next:any) => {
+    res.header('Access-Control-Allow-Origin', '*');
+    res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
+    res.header('Access-Control-Allow-Headers', 'Content-Type');
+    next();
+  });
+  
 
 app.set("view engine", "ejs");
 app.set("views","./src/views")
