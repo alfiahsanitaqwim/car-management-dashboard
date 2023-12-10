@@ -5,6 +5,7 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import CarsShow from "./CarsShow";
+import CreateCars from "./crud/CreateCars";
 
 const router = createBrowserRouter([
   {
@@ -14,6 +15,10 @@ const router = createBrowserRouter([
   {
     path: "/cars/:id",
     element: <CarsShow/>
+  },
+  {
+    path: "/cars-create",
+    element: <CreateCars/>
   },
 ]);
 
