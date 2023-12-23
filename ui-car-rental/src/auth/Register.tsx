@@ -1,6 +1,6 @@
-import axios from "axios";
-import React from "react";
-import { useNavigate } from "react-router-dom";
+import axios from 'axios';
+import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const Register = () => {
   const [form, setForm] = React.useState<any>({
@@ -10,9 +10,9 @@ const Register = () => {
   const navigate = useNavigate();
   const submitRegister = async (e: any) => {
     await axios
-      .post("http://localhost:3000/v1/auth/register", form, {
+      .post('http://localhost:3000/v1/auth/register', form, {
         headers: {
-          "Content-Type": "application/x-www-form-urlencoded",
+          'Content-Type': 'application/x-www-form-urlencoded',
         },
       })
       .then(function () {
