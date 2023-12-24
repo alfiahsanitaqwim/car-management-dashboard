@@ -1,16 +1,16 @@
-import { Knex } from "knex";
+import { Knex } from 'knex';
 
-const CAR_TYPES = "car_types"
+const CAR_TYPES = 'car_types';
 
 export async function up(knex: Knex): Promise<void> {
-    return knex.schema.createTable(CAR_TYPES, (table: Knex.TableBuilder) => {
-        table.increments("id_car_types").primary();
-        table.string("name", 100).notNullable();
-    })
+	return knex.schema.createTable(CAR_TYPES, (table: Knex.TableBuilder) => {
+		table.increments('id_car_types').primary();
+		table.string('name', 100).notNullable();
+	});
 }
 
 
 export async function down(knex: Knex): Promise<void> {
-    return knex.schema.dropTable(CAR_TYPES)
+	return knex.schema.dropTable(CAR_TYPES);
 }
 

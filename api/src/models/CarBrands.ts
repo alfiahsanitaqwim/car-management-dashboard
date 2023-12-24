@@ -1,10 +1,10 @@
-import {Model, ModelObject} from "objection";
+import {Model} from 'objection';
 
 export class CarBrandsModel extends Model {
-    id_car_brand!:number;
-    name!: string;
+	id_car_brand!:number;
+	name!: string;
 
-    static get tableName(){
-        return "car_brands";
-    }
+	static get tableName(){
+		return 'car_brands';
+	}
 }

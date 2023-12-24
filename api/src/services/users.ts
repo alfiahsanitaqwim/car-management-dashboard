@@ -1,31 +1,27 @@
-import UserRepository from "../repositories/users";
+import UserRepository from '../repositories/users';
 
 interface Payload {
     email: string; 
     password?: string;
 }
 
-/**
- * class untuk kebutuhan database connection
- */
-
 export default class UserService {
-    #userRepository: UserRepository;
+	#userRepository: UserRepository;
 
-    constructor(){
-        this.#userRepository = new UserRepository();
-    }
+	constructor(){
+		this.#userRepository = new UserRepository();
+	}
     
-    async post(param: Payload){
-        return await this.#userRepository.post(param);
-    }
+	async post(param: Payload){
+		return await this.#userRepository.post(param);
+	}
 
-    async get(param: Payload){
-        const email = param.email || "";
-        return await this.#userRepository.get(email)
-    }
+	async get(param: Payload){
+		const email = param.email || '';
+		return await this.#userRepository.get(email);
+	}
 
-    async getById(param: number | string){
-        return await this.#userRepository.getById(param)
-    }
+	async getById(param: number | string){
+		return await this.#userRepository.getById(param);
+	}
 }

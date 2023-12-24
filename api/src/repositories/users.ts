@@ -1,4 +1,4 @@
-import { UserModel } from "../models/User";
+import { UserModel } from '../models/User';
 
 interface Payload {
     email: string;
@@ -6,20 +6,20 @@ interface Payload {
 }
 
 export default class UserRepository {
-    async post(param: Payload){
-        const email  = param.email;
-        const password  = param.password;
+	async post(param: Payload){
+		const email  = param.email;
+		const password  = param.password;
 
-        return await UserModel.query().insert({email, password, id_role: 3}).returning("*"); 
-    };
+		return await UserModel.query().insert({email, password, id_role: 3}).returning('*'); 
+	}
 
-    async get(email: string){
-        return await UserModel.query().findOne({email}).returning("*");
-    }
+	async get(email: string){
+		return await UserModel.query().findOne({email}).returning('*');
+	}
 
 
-    async getById(param: number | string){
-        console.log({param})
-        return await UserModel.query().findOne({user_id: param}).returning("*")
-    }
+	async getById(param: number | string){
+		console.log({param});
+		return await UserModel.query().findOne({user_id: param}).returning('*');
+	}
 }

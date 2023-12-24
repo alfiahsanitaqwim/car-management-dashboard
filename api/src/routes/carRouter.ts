@@ -1,13 +1,14 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
 // @ts-ignore
-const express = require("express");
+import express from 'express';
 // @ts-ignore
 const router  = express.Router();
-const carController = require("./../controllers/carsControllers")
+import {get, getById, post, updateById, deleteById} from './../controllers/carsControllers';
 
-router.get("/", carController.get);
-router.get("/:id",carController.getById)
-router.post("/create",carController.post);
-router.put("/update/:id", carController.updateById)
-router.post("/delete/:id", carController.deleteById);
+router.get('/', get);
+router.get('/:id', getById);
+router.post('/create', post);
+router.put('/update/:id', updateById);
+router.post('/delete/:id', deleteById);
 
 module.exports = router;

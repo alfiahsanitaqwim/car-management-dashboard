@@ -1,10 +1,11 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
 //@ts-ignore
-const express = require("express");
+import express from 'express';
 //@ts-ignore
 const router = express.Router();
-const userController = require("./../controllers/usersController");
+import {updateRole, getCurrentUser} from './../controllers/usersController';
 
-router.put("/update-role", userController.updateRole)
-router.get("/current-user", userController.getCurrentUser) 
+router.put('/update-role', updateRole);
+router.get('/current-user', getCurrentUser); 
 
 module.exports = router;

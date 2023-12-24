@@ -1,30 +1,31 @@
-import CarRepository from "../repositories/cars";
-import { Request, Response } from "express";
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import CarRepository from '../repositories/cars';
+import { Request } from 'express';
 
 export default class CarService {
-    #carRepository: CarRepository;
+	#carRepository: CarRepository;
 
-    constructor(){
-        this.#carRepository = new CarRepository();
-    }
+	constructor(){
+		this.#carRepository = new CarRepository();
+	}
 
-   async getAll(){
-        return await this.#carRepository.getAll();
-    }
+	async getAll(){
+		return await this.#carRepository.getAll();
+	}
 
-    async getById(id:any){
-        return await this.#carRepository.getById(id);
-    }
+	async getById(id:any){
+		return await this.#carRepository.getById(id);
+	}
 
-    async post(req: Request){
-        return await this.#carRepository.post(req);
-    }
+	async post(req: Request){
+		return await this.#carRepository.post(req);
+	}
 
-    async delete(id: any, req: Request){
-        return await this.#carRepository.delete(id, req);
-    }
+	async delete(id: any, req: Request){
+		return await this.#carRepository.delete(id, req);
+	}
 
-    async update(req: Request){
-        return await this.#carRepository.update(req);
-    }
+	async update(req: Request){
+		return await this.#carRepository.update(req);
+	}
 }

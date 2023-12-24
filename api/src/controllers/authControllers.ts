@@ -1,9 +1,11 @@
-import { Request, Response } from "express";
-import UserService from "../services/users";
-import jwt from "jsonwebtoken";
+/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable @typescript-eslint/ban-ts-comment */
+import { Request, Response } from 'express';
+import UserService from '../services/users';
+import jwt from 'jsonwebtoken';
 
-const checkPassword = require("../utilities/checkPassword");
-const  encryptPassword = require("../utilities/encryptPassword")
+import checkPassword from '../utilities/checkPassword';
+import encryptPassword from '../utilities/encryptPassword';
 
 interface UserPayload {
     email: string
@@ -11,64 +13,61 @@ interface UserPayload {
 }
 
 export const createToken = (payload: UserPayload) => {
-    return jwt.sign(payload, process.env.SIGNATURE_KEY || "Rahasia")
-} 
-
-// export const loginPage = async (req: Request, res: Response) => {
-//     res.status(200).render('loginPage', {})
-// }
+	return jwt.sign(payload, process.env.SIGNATURE_KEY || 'Rahasia');
+}; 
 
 export const login  =  async (req:Request, res: Response) => {
-    const email = req.body.email.toLowerCase().trim();
-    const password = req.body.password || "";
-    const user = await new UserService().get({email});
+	const email = req.body.email.toLowerCase().trim();
+	const password = req.body.password || '';
+	const user = await new UserService().get({email});
 
-    if(!user){
-        return res.status(404).json({
-            message: "Email doesn't not exist, try another one!"
-        })
-    }
+	if(!user){
+		return res.status(404).json({
+			message: 'Email doesn\'t not exist, try another one!'
+		});
+	}
 
-    const passwordChecked = await checkPassword(user.password, password)
+	const passwordChecked = await checkPassword(user.password, password);
 
-    if(!passwordChecked){
-        return res.status(401).json({
-            message: "Uncorrect password, try again!"
-        })
-    }
+	if(!passwordChecked){
+		return res.status(401).json({
+			message: 'Uncorrect password, try again!'
+		});
+	}
 
-    const token = createToken({
-        // @ts-ignore
-        user_id: user.user_id,
-        email: user.email,
-        role: user.id_role,
-    })
+	const token = createToken({
+		// @ts-ignore
+		user_id: user.user_id,
+		email: user.email,
+		role: user.id_role,
+	});
 
-    return res.status(200).json({
-        token,
-        status: 200,
-        message: "Successfully Logged In",
+	return res.status(200).json({
+		token,
+		status: 200,
+		message: 'Successfully Logged In',
 
-    })
-}
+	});
+};
 
 export const register = async (req: Request, res: Response) => {
-    const email = req.body.email;
-    const password = req.body.password || "";
+	const email = req.body.email;
+	const password = req.body.password || '';
 
-    try {
-        const encryptedPassword = await encryptPassword(password);
+	try {
+		const encryptedPassword: any = await encryptPassword(password);
 
-        await new UserService().post({ email, password: encryptedPassword });
+		await new UserService().post({ email, password: encryptedPassword });
 
-        return res.json({
-            message: "Success",
-        });
+		return res.json({
+			message: 'Success',
+		});
         
-    } catch (error) {
-        return res.status(500).json({
-            message: "Registration failed",
-            error: error
-        });
-    }
+	} catch (error) {
+		return res.status(500).json({
+			message: 'Registration failed',
+			error: error
+		});
+	}
 };
+

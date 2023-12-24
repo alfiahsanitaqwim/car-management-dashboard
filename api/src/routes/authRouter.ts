@@ -1,10 +1,11 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
 //@ts-ignore
-const express = require("express");
+import express from 'express';
 //@ts-ignore
 const router = express.Router();
-const authControllers = require("./../controllers/authControllers")
+import {login, register} from './../controllers/authControllers';
 
-router.post("/login", authControllers.login);
-router.post("/register", authControllers.register); 
+router.post('/login', login);
+router.post('/register', register); 
 
 module.exports = router;
