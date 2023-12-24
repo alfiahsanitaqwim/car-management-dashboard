@@ -23,30 +23,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">33.33% </span>
+                <span class="strong">66.66% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>10/30</span>
+                <span class='fraction'>20/30</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">37.5% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>0/8</span>
+                <span class='fraction'>3/8</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">60% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>0/5</span>
+                <span class='fraction'>3/5</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">28% </span>
+                <span class="strong">64% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>7/25</span>
+                <span class='fraction'>16/25</span>
             </div>
         
             
@@ -61,7 +61,7 @@
             </div>
         </template>
     </div>
-    <div class='status-line low'></div>
+    <div class='status-line medium'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -151,36 +151,36 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -223,37 +223,37 @@ interface UserPayload {
     password?: string
 }
 &nbsp;
-export const createToken = <span class="fstat-no" title="function not covered" >(p</span>ayload: UserPayload) =&gt; {
-<span class="cstat-no" title="statement not covered" >	return jwt.sign(payload, process.env.SIGNATURE_KEY || 'Rahasia');</span>
+export const createToken = (payload: UserPayload) =&gt; {
+	return jwt.sign(payload, process.env.SIGNATURE_KEY || 'Rahasia');
 }; 
 &nbsp;
-export const login  =  <span class="fstat-no" title="function not covered" >async (r</span>eq:Request, res: Response) =&gt;<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" > {</span></span>
-	const email = <span class="cstat-no" title="statement not covered" >req.body.email.toLowerCase().trim();</span>
-	const password = <span class="cstat-no" title="statement not covered" >req.body.password || '';</span>
-	const user = <span class="cstat-no" title="statement not covered" >await new UserService().get({email});</span>
+export const login  =  async (req:Request, res: Response) =&gt; {
+	const email = req.body.email.toLowerCase().trim();
+	const password = req.body.password || <span class="branch-1 cbranch-no" title="branch not covered" >'';</span>
+	const user = await new UserService().get({email});
 &nbsp;
-<span class="cstat-no" title="statement not covered" >	<span class="missing-if-branch" title="if path not taken" >I</span>if(!user){</span>
+	<span class="missing-if-branch" title="if path not taken" >I</span>if(!user){
 <span class="cstat-no" title="statement not covered" >		return res.status(404).json({</span>
 			message: 'Email doesn\'t not exist, try another one!'
 		});
 	}
 &nbsp;
-	const passwordChecked = <span class="cstat-no" title="statement not covered" >await checkPassword(user.password, password);</span>
+	const passwordChecked = await checkPassword(user.password, password);
 &nbsp;
-<span class="cstat-no" title="statement not covered" >	<span class="missing-if-branch" title="if path not taken" >I</span>if(!passwordChecked){</span>
+	<span class="missing-if-branch" title="if path not taken" >I</span>if(!passwordChecked){
 <span class="cstat-no" title="statement not covered" >		return res.status(401).json({</span>
 			message: 'Uncorrect password, try again!'
 		});
 	}
 &nbsp;
-	const token = <span class="cstat-no" title="statement not covered" >createToken({</span>
+	const token = createToken({
 		// @ts-ignore
 		user_id: user.user_id,
 		email: user.email,
 		role: user.id_role,
 	});
 &nbsp;
-<span class="cstat-no" title="statement not covered" >	return res.status(200).json({</span>
+	return res.status(200).json({
 		token,
 		status: 200,
 		message: 'Successfully Logged In',
@@ -289,7 +289,7 @@ export const register = <span class="fstat-no" title="function not covered" >asy
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2023-12-24T13:26:56.149Z
+                at 2023-12-24T13:39:56.505Z
             </div>
         <script src="../../../prettify.js"></script>
         <script>

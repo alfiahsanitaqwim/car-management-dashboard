@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1703424416171" clover="3.2.0">
-  <project timestamp="1703424416171" name="All files">
-    <metrics statements="252" coveredstatements="119" conditionals="101" coveredconditionals="1" methods="67" coveredmethods="10" elements="420" coveredelements="130" complexity="0" loc="252" ncloc="252" packages="8" files="21" classes="21"/>
+<coverage generated="1703425196527" clover="3.2.0">
+  <project timestamp="1703425196527" name="All files">
+    <metrics statements="252" coveredstatements="143" conditionals="101" coveredconditionals="5" methods="67" coveredmethods="25" elements="420" coveredelements="173" complexity="0" loc="252" ncloc="252" packages="8" files="21" classes="21"/>
     <package name="api">
       <metrics statements="45" coveredstatements="39" conditionals="1" coveredconditionals="0" methods="4" coveredmethods="2"/>
       <file name="config.ts" path="/Users/alfiahsanitaqwim/Documents/cars-a/api/config.ts">
@@ -31,10 +31,10 @@
         <line num="36" count="1" type="stmt"/>
         <line num="38" count="1" type="stmt"/>
         <line num="44" count="1" type="stmt"/>
-        <line num="45" count="2" type="stmt"/>
-        <line num="46" count="2" type="stmt"/>
-        <line num="47" count="2" type="stmt"/>
-        <line num="48" count="2" type="stmt"/>
+        <line num="45" count="4" type="stmt"/>
+        <line num="46" count="4" type="stmt"/>
+        <line num="47" count="4" type="stmt"/>
+        <line num="48" count="4" type="stmt"/>
         <line num="52" count="1" type="stmt"/>
         <line num="53" count="1" type="stmt"/>
         <line num="54" count="1" type="stmt"/>
@@ -57,26 +57,26 @@
       </file>
     </package>
     <package name="api.src.controllers">
-      <metrics statements="104" coveredstatements="26" conditionals="82" coveredconditionals="0" methods="34" coveredmethods="3"/>
+      <metrics statements="104" coveredstatements="38" conditionals="82" coveredconditionals="3" methods="34" coveredmethods="9"/>
       <file name="authControllers.ts" path="/Users/alfiahsanitaqwim/Documents/cars-a/api/src/controllers/authControllers.ts">
-        <metrics statements="25" coveredstatements="7" conditionals="8" coveredconditionals="0" methods="5" coveredmethods="0"/>
+        <metrics statements="25" coveredstatements="16" conditionals="8" coveredconditionals="3" methods="5" coveredmethods="3"/>
         <line num="4" count="1" type="stmt"/>
         <line num="5" count="1" type="stmt"/>
         <line num="7" count="1" type="stmt"/>
         <line num="8" count="1" type="stmt"/>
         <line num="15" count="1" type="stmt"/>
-        <line num="16" count="0" type="cond" truecount="0" falsecount="2"/>
-        <line num="19" count="1" type="stmt"/>
-        <line num="20" count="0" type="stmt"/>
-        <line num="21" count="0" type="cond" truecount="0" falsecount="2"/>
-        <line num="22" count="0" type="stmt"/>
-        <line num="24" count="0" type="cond" truecount="0" falsecount="1"/>
+        <line num="16" count="2" type="cond" truecount="2" falsecount="0"/>
+        <line num="19" count="2" type="stmt"/>
+        <line num="20" count="2" type="stmt"/>
+        <line num="21" count="2" type="cond" truecount="1" falsecount="1"/>
+        <line num="22" count="2" type="stmt"/>
+        <line num="24" count="2" type="cond" truecount="0" falsecount="1"/>
         <line num="25" count="0" type="stmt"/>
-        <line num="30" count="0" type="stmt"/>
-        <line num="32" count="0" type="cond" truecount="0" falsecount="1"/>
+        <line num="30" count="2" type="stmt"/>
+        <line num="32" count="2" type="cond" truecount="0" falsecount="1"/>
         <line num="33" count="0" type="stmt"/>
-        <line num="38" count="0" type="stmt"/>
-        <line num="45" count="0" type="stmt"/>
+        <line num="38" count="2" type="stmt"/>
+        <line num="45" count="2" type="stmt"/>
         <line num="53" count="1" type="stmt"/>
         <line num="54" count="0" type="stmt"/>
         <line num="55" count="0" type="cond" truecount="0" falsecount="2"/>
@@ -87,17 +87,17 @@
         <line num="67" count="0" type="stmt"/>
       </file>
       <file name="carsControllers.ts" path="/Users/alfiahsanitaqwim/Documents/cars-a/api/src/controllers/carsControllers.ts">
-        <metrics statements="34" coveredstatements="9" conditionals="6" coveredconditionals="0" methods="20" coveredmethods="3"/>
+        <metrics statements="34" coveredstatements="12" conditionals="6" coveredconditionals="0" methods="20" coveredmethods="6"/>
         <line num="1" count="1" type="stmt"/>
         <line num="3" count="1" type="stmt"/>
-        <line num="5" count="2" type="stmt"/>
-        <line num="6" count="2" type="stmt"/>
-        <line num="7" count="2" type="stmt"/>
+        <line num="5" count="1" type="stmt"/>
+        <line num="6" count="1" type="stmt"/>
+        <line num="7" count="1" type="stmt"/>
         <line num="12" count="0" type="stmt"/>
         <line num="19" count="1" type="stmt"/>
-        <line num="20" count="0" type="stmt"/>
-        <line num="21" count="0" type="stmt"/>
-        <line num="22" count="0" type="stmt"/>
+        <line num="20" count="1" type="stmt"/>
+        <line num="21" count="1" type="stmt"/>
+        <line num="22" count="1" type="stmt"/>
         <line num="27" count="0" type="stmt"/>
         <line num="34" count="1" type="stmt"/>
         <line num="35" count="0" type="stmt"/>
@@ -183,7 +183,7 @@
       <file name="handlerLogger.ts" path="/Users/alfiahsanitaqwim/Documents/cars-a/api/src/middleware/handlerLogger.ts">
         <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
         <line num="3" count="1" type="stmt"/>
-        <line num="5" count="2" type="stmt"/>
+        <line num="5" count="4" type="stmt"/>
         <line num="8" count="1" type="stmt"/>
       </file>
       <file name="upload.ts" path="/Users/alfiahsanitaqwim/Documents/cars-a/api/src/middleware/upload.ts">
@@ -194,7 +194,7 @@
       </file>
     </package>
     <package name="api.src.models">
-      <metrics statements="9" coveredstatements="7" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="1"/>
+      <metrics statements="9" coveredstatements="8" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="2"/>
       <file name="CarsData.ts" path="/Users/alfiahsanitaqwim/Documents/cars-a/api/src/models/CarsData.ts">
         <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
         <line num="1" count="1" type="stmt"/>
@@ -208,27 +208,27 @@
         <line num="8" count="0" type="stmt"/>
       </file>
       <file name="User.ts" path="/Users/alfiahsanitaqwim/Documents/cars-a/api/src/models/User.ts">
-        <metrics statements="3" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
+        <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
         <line num="1" count="1" type="stmt"/>
         <line num="3" count="1" type="stmt"/>
-        <line num="9" count="0" type="stmt"/>
+        <line num="9" count="6" type="stmt"/>
       </file>
     </package>
     <package name="api.src.repositories">
-      <metrics statements="31" coveredstatements="7" conditionals="14" coveredconditionals="1" methods="8" coveredmethods="1"/>
+      <metrics statements="31" coveredstatements="9" conditionals="14" coveredconditionals="1" methods="8" coveredmethods="3"/>
       <file name="cars.ts" path="/Users/alfiahsanitaqwim/Documents/cars-a/api/src/repositories/cars.ts">
-        <metrics statements="23" coveredstatements="5" conditionals="14" coveredconditionals="1" methods="5" coveredmethods="1"/>
+        <metrics statements="23" coveredstatements="6" conditionals="14" coveredconditionals="1" methods="5" coveredmethods="2"/>
         <line num="2" count="1" type="stmt"/>
         <line num="3" count="1" type="stmt"/>
         <line num="4" count="1" type="stmt"/>
         <line num="7" count="1" type="stmt"/>
-        <line num="9" count="2" type="cond" truecount="1" falsecount="1"/>
+        <line num="9" count="1" type="cond" truecount="1" falsecount="1"/>
         <line num="22" count="0" type="stmt"/>
         <line num="24" count="0" type="stmt"/>
         <line num="25" count="0" type="stmt"/>
         <line num="26" count="0" type="stmt"/>
         <line num="28" count="0" type="stmt"/>
-        <line num="42" count="0" type="stmt"/>
+        <line num="42" count="1" type="stmt"/>
         <line num="46" count="0" type="stmt"/>
         <line num="47" count="0" type="stmt"/>
         <line num="58" count="0" type="stmt"/>
@@ -243,13 +243,13 @@
         <line num="83" count="0" type="stmt"/>
       </file>
       <file name="users.ts" path="/Users/alfiahsanitaqwim/Documents/cars-a/api/src/repositories/users.ts">
-        <metrics statements="8" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="0"/>
+        <metrics statements="8" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="1"/>
         <line num="1" count="1" type="stmt"/>
         <line num="8" count="1" type="stmt"/>
         <line num="10" count="0" type="stmt"/>
         <line num="11" count="0" type="stmt"/>
         <line num="13" count="0" type="stmt"/>
-        <line num="17" count="0" type="stmt"/>
+        <line num="17" count="2" type="stmt"/>
         <line num="22" count="0" type="stmt"/>
         <line num="23" count="0" type="stmt"/>
       </file>
@@ -290,42 +290,42 @@
       </file>
     </package>
     <package name="api.src.services">
-      <metrics statements="17" coveredstatements="7" conditionals="2" coveredconditionals="0" methods="10" coveredmethods="2"/>
+      <metrics statements="17" coveredstatements="12" conditionals="2" coveredconditionals="1" methods="10" coveredmethods="5"/>
       <file name="cars.ts" path="/Users/alfiahsanitaqwim/Documents/cars-a/api/src/services/cars.ts">
-        <metrics statements="9" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="6" coveredmethods="2"/>
+        <metrics statements="9" coveredstatements="6" conditionals="0" coveredconditionals="0" methods="6" coveredmethods="3"/>
         <line num="2" count="1" type="stmt"/>
         <line num="5" count="1" type="stmt"/>
         <line num="6" count="2" type="stmt"/>
         <line num="9" count="2" type="stmt"/>
-        <line num="13" count="2" type="stmt"/>
-        <line num="17" count="0" type="stmt"/>
+        <line num="13" count="1" type="stmt"/>
+        <line num="17" count="1" type="stmt"/>
         <line num="21" count="0" type="stmt"/>
         <line num="25" count="0" type="stmt"/>
         <line num="29" count="0" type="stmt"/>
       </file>
       <file name="users.ts" path="/Users/alfiahsanitaqwim/Documents/cars-a/api/src/services/users.ts">
-        <metrics statements="8" coveredstatements="2" conditionals="2" coveredconditionals="0" methods="4" coveredmethods="0"/>
+        <metrics statements="8" coveredstatements="6" conditionals="2" coveredconditionals="1" methods="4" coveredmethods="2"/>
         <line num="1" count="1" type="stmt"/>
         <line num="8" count="1" type="stmt"/>
-        <line num="9" count="0" type="stmt"/>
-        <line num="12" count="0" type="stmt"/>
+        <line num="9" count="2" type="stmt"/>
+        <line num="12" count="2" type="stmt"/>
         <line num="16" count="0" type="stmt"/>
-        <line num="20" count="0" type="cond" truecount="0" falsecount="2"/>
-        <line num="21" count="0" type="stmt"/>
+        <line num="20" count="2" type="cond" truecount="1" falsecount="1"/>
+        <line num="21" count="2" type="stmt"/>
         <line num="25" count="0" type="stmt"/>
       </file>
     </package>
     <package name="api.src.utilities">
-      <metrics statements="17" coveredstatements="5" conditionals="2" coveredconditionals="0" methods="6" coveredmethods="0"/>
+      <metrics statements="17" coveredstatements="9" conditionals="2" coveredconditionals="0" methods="6" coveredmethods="3"/>
       <file name="checkPassword.ts" path="/Users/alfiahsanitaqwim/Documents/cars-a/api/src/utilities/checkPassword.ts">
-        <metrics statements="8" coveredstatements="2" conditionals="1" coveredconditionals="0" methods="3" coveredmethods="0"/>
+        <metrics statements="8" coveredstatements="6" conditionals="1" coveredconditionals="0" methods="3" coveredmethods="3"/>
         <line num="2" count="1" type="stmt"/>
-        <line num="5" count="0" type="stmt"/>
-        <line num="6" count="0" type="stmt"/>
-        <line num="7" count="0" type="cond" truecount="0" falsecount="1"/>
+        <line num="5" count="2" type="stmt"/>
+        <line num="6" count="2" type="stmt"/>
+        <line num="7" count="2" type="cond" truecount="0" falsecount="1"/>
         <line num="8" count="0" type="stmt"/>
         <line num="9" count="0" type="stmt"/>
-        <line num="11" count="0" type="stmt"/>
+        <line num="11" count="2" type="stmt"/>
         <line num="16" count="1" type="stmt"/>
       </file>
       <file name="encryptPassword.ts" path="/Users/alfiahsanitaqwim/Documents/cars-a/api/src/utilities/encryptPassword.ts">
