@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "npx nodemon ./index.ts",
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest",
     "migrate": "npx prisma migrate dev --name",
     "rollback": "npx knex migrate:rollback",
     "refresh": "npx knex migrate:rollback && npx knex migrate:latest && npx knex seed:run",
@@ -18,11 +18,12 @@
   "dependencies": {
     "@prisma/client": "^5.5.2",
     "@types/http-errors": "^2.0.4",
+    "@types/jest": "^29.5.11",
     "@types/jsonwebtoken": "^9.0.5",
+    "@types/supertest": "^6.0.1",
     "bcrypt": "^5.1.1",
     "bcryptjs": "^2.4.3",
     "cloudinary": "^1.41.0",
-    "eslint-plugin-jest": "^27.6.0",
     "express": "^4.18.2",
     "jsonwebtoken": "^9.0.2",
     "knex": "^3.0.1",
@@ -49,6 +50,7 @@
     "nodemon": "^3.0.1",
     "prisma": "^5.5.2",
     "supertest": "^6.3.3",
+    "ts-jest": "^29.1.1",
     "ts-node": "^10.9.1",
     "typescript": "^5.2.2"
   }
