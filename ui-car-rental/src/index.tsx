@@ -1,88 +1,88 @@
-import React from "react";
-import ReactDOM from "react-dom/client";
-import "./index.css";
-import App from "./App";
-import reportWebVitals from "./reportWebVitals";
-import { RouterProvider, createBrowserRouter } from "react-router-dom";
-import CarsShow from "./CarsShow";
-import CreateCars from "./crud/CreateCars";
-import Login from "./auth/Login";
-import Register from "./auth/Register";
-import List from "./crud/List";
-import EditCars from "./crud/EditCars";
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import './index.css';
+import App from './App';
+import reportWebVitals from './reportWebVitals';
+import { RouterProvider, createBrowserRouter } from 'react-router-dom';
+import CarsShow from './CarsShow';
+import CreateCars from './crud/CreateCars';
+import Login from './auth/Login';
+import Register from './auth/Register';
+import List from './crud/List';
+import EditCars from './crud/EditCars';
 
 const router = createBrowserRouter([
-  {
-    path: "/",
-    element: <App />,
-  },
-  {
-    path: "/login",
-    element: <Login />,
-  },
-  {
-    path: "/register",
-    element: <Register />,
-  },
-  {
-    path: "/cars",
-    element: <List />,
-  },
-  {
-    path: "/cars/:id",
-    element: <CarsShow />,
-  },
-  {
-    path: "/cars/:id/edit",
-    element: <EditCars />,
-  },
+	{
+		path: '/',
+		element: <App />,
+	},
+	{
+		path: '/login',
+		element: <Login />,
+	},
+	{
+		path: '/register',
+		element: <Register />,
+	},
+	{
+		path: '/cars',
+		element: <List />,
+	},
+	{
+		path: '/cars/:id',
+		element: <CarsShow />,
+	},
+	{
+		path: '/cars/:id/edit',
+		element: <EditCars />,
+	},
 ]);
 
 const routerAuthorization = createBrowserRouter([
-  {
-    path: "/",
-    element: <App />,
-  },
-  {
-    path: "/login",
-    element: <Login />,
-  },
-  {
-    path: "/register",
-    element: <Register />,
-  },
-  {
-    path: "/cars",
-    element: <List />,
-  },
-  {
-    path: "/cars/:id",
-    element: <CarsShow />,
-  },
-  {
-    path: "/cars-create",
-    element: <CreateCars />,
-  },
-  {
-    path: "/cars/:id/edit",
-    element: <EditCars />,
-  },
+	{
+		path: '/',
+		element: <App />,
+	},
+	{
+		path: '/login',
+		element: <Login />,
+	},
+	{
+		path: '/register',
+		element: <Register />,
+	},
+	{
+		path: '/cars',
+		element: <List />,
+	},
+	{
+		path: '/cars/:id',
+		element: <CarsShow />,
+	},
+	{
+		path: '/cars-create',
+		element: <CreateCars />,
+	},
+	{
+		path: '/cars/:id/edit',
+		element: <EditCars />,
+	},
 ]);
 
 const root = ReactDOM.createRoot(
-  document.getElementById("root") as HTMLElement
+  document.getElementById('root') as HTMLElement
 );
 
-const token = localStorage.getItem("token");
+const token = localStorage.getItem('token');
 
 root.render(
-  <React.StrictMode>
-    {token ? (
-      <RouterProvider router={routerAuthorization} />
-    ) : (
-      <RouterProvider router={router} />
-    )}
-  </React.StrictMode>
+	<React.StrictMode>
+		{token ? (
+			<RouterProvider router={routerAuthorization} />
+		) : (
+			<RouterProvider router={router} />
+		)}
+	</React.StrictMode>
 );
 
 // If you want to start measuring performance in your app, pass a function
