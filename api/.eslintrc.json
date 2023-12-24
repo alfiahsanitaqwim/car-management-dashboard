@@ -7,7 +7,7 @@
     "extends": [
         "eslint:recommended",
         "plugin:@typescript-eslint/recommended",
-        "plugin:react/recommended"
+        "plugin:node/recommended"
     ],
     "parser": "@typescript-eslint/parser",
     "parserOptions": {
@@ -16,7 +16,7 @@
     },
     "plugins": [
         "@typescript-eslint",
-        "react"
+        "node"
     ],
     "rules": {
         "indent": [
@@ -34,8 +34,6 @@
         "semi": [
             "error",
             "always"
-        ],
-        "react/react-in-jsx-scope": "off",
-        "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx", ".tsx", ".ts"] }]
+        ]
     }
 }
