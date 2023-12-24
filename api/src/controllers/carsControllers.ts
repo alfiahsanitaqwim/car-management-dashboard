@@ -4,7 +4,6 @@ import { userRole } from './userRolesController';
 
 export const get = async (req:Request, res: Response)=> { 
 	new CarService().getAll().then((response)=> {
-		console.log({response});
 		res.status(200).json({
 			message: 'success', 
 			data: response

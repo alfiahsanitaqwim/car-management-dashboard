@@ -85,3 +85,5 @@ app.post('/v1/cars/picture', upload.single('picture'), (req, res)=> {
 app.listen(PORT, ()=> {
 	console.log(`is listening to port ${PORT}`);
 } );
+
+export default app;
