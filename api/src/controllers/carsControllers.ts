@@ -61,9 +61,9 @@ export const deleteById = async (req:Request, res: Response) => {
 		access: 'superandadmin'
 	});
 	const reqParam  = req.params;
-	const id_car = Number(reqParam.id);
+	const id_cars = Number(reqParam.id);
 	if (role) {
-		new CarService().delete(id_car, req).then((response)=> {
+		new CarService().delete(id_cars, req).then((response)=> {
 			res.status(200).json({
 				message: 'Delete successfully', 
 				data: response

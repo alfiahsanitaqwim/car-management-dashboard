@@ -44,7 +44,7 @@ export default class CarRepository {
 
 	async update(req: Request) {
 		const reqParam = req.params;
-		const id_car = Number(reqParam.id);
+		const id_cars = Number(reqParam.id);
 		const {
 			car_name,
 			availability,
@@ -61,7 +61,7 @@ export default class CarRepository {
 		const logDesc = `User email address ${email} create car named ${car_name}, type ${id_car_type}, and brand ${id_car_brand}, at ${new Date()}`;
 		await LogAct(1, logDesc);
 
-		return await CarsDataModel.query().where('id_cars', '=', id_car).update({
+		return await CarsDataModel.query().where('id_cars', '=', id_cars).update({
 			car_name,
 			availability,
 			capacity,

@@ -23,30 +23,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">15% </span>
+                <span class="strong">50% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>3/20</span>
+                <span class='fraction'>10/20</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">26.31% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>0/38</span>
+                <span class='fraction'>10/38</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>0/2</span>
+                <span class='fraction'>2/2</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">11.11% </span>
+                <span class="strong">44.44% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>2/18</span>
+                <span class='fraction'>8/18</span>
             </div>
         
             
@@ -61,7 +61,7 @@
             </div>
         </template>
     </div>
-    <div class='status-line low'></div>
+    <div class='status-line medium'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -104,16 +104,12 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -122,10 +118,14 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -137,12 +137,12 @@ interface Props {
     req:Request,
     access: 'superadmin' | 'admin' | 'superandadmin' 
 }
-export const userRole = <span class="fstat-no" title="function not covered" >async (p</span>rops: Props) =&gt;<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" > {</span></span>
-	const {req, access} = <span class="cstat-no" title="statement not covered" >props;</span>
-<span class="cstat-no" title="statement not covered" >	try {</span>
-		const bearerToken = <span class="cstat-no" title="statement not covered" >req.headers.authorization;</span>
-		const token = <span class="cstat-no" title="statement not covered" >bearerToken?.split('Bearer ')?.[1] || '';</span>
-		const tokenPayload:any = <span class="cstat-no" title="statement not covered" >await jwt.verify(token, process.env.SIGNATURE_KEY || 'Rahasia');         </span>
+export const userRole = async (props: Props) =&gt; {
+	const {req, access} = props;
+	try {
+		const bearerToken = req.headers.authorization;
+		const token = bearerToken<span class="branch-0 cbranch-no" title="branch not covered" >?.s</span>plit('Bearer ')<span class="branch-0 cbranch-no" title="branch not covered" >?.[1</span>] || '';
+		const tokenPayload:any = await jwt.verify(token, process.env.SIGNATURE_KEY || 'Rahasia');         
 <span class="cstat-no" title="statement not covered" >		if(access === 'superadmin'){</span>
 <span class="cstat-no" title="statement not covered" >			<span class="missing-if-branch" title="if path not taken" >I</span>if(tokenPayload?.role === 1){</span>
 <span class="cstat-no" title="statement not covered" >				return true;</span>
@@ -158,7 +158,7 @@ export const userRole = <span class="fstat-no" title="function not covered" >asy
 		}
 <span class="cstat-no" title="statement not covered" >		return false; </span>
 	}catch{
-<span class="cstat-no" title="statement not covered" >		return false;   </span>
+		return false;   
 	}
 };
 &nbsp;
@@ -169,7 +169,7 @@ export const userRole = <span class="fstat-no" title="function not covered" >asy
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2023-12-24T13:39:56.505Z
+                at 2023-12-24T14:17:23.266Z
             </div>
         <script src="../../../prettify.js"></script>
         <script>
